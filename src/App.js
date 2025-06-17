@@ -7,6 +7,9 @@ export default function App() {
     diet: false,
   });
 
+  // Neuer State für Slider
+  const [dailyNeed, setDailyNeed] = useState(2.4); // in Mikrogramm (µg)
+
   const handleChange = (e) => {
     const { name, checked } = e.target;
     setTestAnswers((prev) => ({ ...prev, [name]: checked }));
@@ -100,6 +103,7 @@ export default function App() {
         section:nth-child(3) { animation-delay: 2.2s; }
         section:nth-child(4) { animation-delay: 2.4s; }
         section:nth-child(5) { animation-delay: 2.6s; }
+        section:nth-child(6) { animation-delay: 2.8s; } /* für neue Sektionen */
 
         h3 {
           font-size: 28px;
@@ -142,6 +146,12 @@ export default function App() {
           cursor: pointer;
         }
 
+        input[type="range"] {
+          width: 100%;
+          margin: 12px 0 24px;
+          cursor: pointer;
+        }
+
         .result {
           max-width: 700px;
           background-color: #f5f5f7;
@@ -153,6 +163,35 @@ export default function App() {
           color: #1d1d1f;
           margin-top: 32px;
           animation: fadeInUp 1s ease forwards;
+        }
+
+        .infocard {
+          background-color: #e6f0ff;
+          border: 2px solid #0071e3;
+          border-radius: 12px;
+          padding: 24px;
+          max-width: 700px;
+          font-size: 18px;
+          color: #003a75;
+          margin-bottom: 40px;
+          box-shadow: 0 4px 8px rgba(0,113,227,0.2);
+        }
+
+        .faq-item {
+          margin-bottom: 24px;
+        }
+
+        .faq-question {
+          font-weight: 600;
+          cursor: pointer;
+          margin-bottom: 8px;
+          color: #0071e3;
+          user-select: none;
+        }
+
+        .faq-answer {
+          padding-left: 20px;
+          color: #3c3c4399;
         }
 
         footer {
@@ -240,6 +279,16 @@ export default function App() {
           </ul>
         </section>
 
+        {/* NEU: Infokarte zum B12-Mangel */}
+        <section className="infocard">
+          <h3>ℹ️ Infokarte: B12-Mangel</h3>
+          <p>
+            Ein Vitamin B12-Mangel kann zu ernsthaften gesundheitlichen Problemen führen, 
+            wie z. B. Blutarmut, Nervenschäden und chronischer Müdigkeit. Besonders 
+            gefährdet sind Vegetarier, Veganer und ältere Menschen.
+          </p>
+        </section>
+
         <section>
           <h3>🥦 Natürliche Quellen</h3>
           <ul>
@@ -248,6 +297,41 @@ export default function App() {
             <li>Eier und Milchprodukte</li>
             <li>Angereicherte Produkte für Veganer</li>
           </ul>
+        </section>
+
+        {/* NEU: Slider für Tagesbedarf */}
+        <section>
+          <h3>🎚️ Tagesbedarf an Vitamin B12 einstellen</h3>
+          <p>Stelle deinen empfohlenen Tagesbedarf ein: <b>{dailyNeed.toFixed(1)} µg</b></p>
+          <input
+            type="range"
+            min="1"
+            max="5"
+            step="0.1"
+            value={dailyNeed}
+            onChange={(e) => setDailyNeed(parseFloat(e.target.value))}
+          />
+          <p>
+            Der empfohlene Tagesbedarf für Erwachsene liegt bei etwa 2.4 µg Vitamin B12.
+          </p>
+        </section>
+
+        {/* FAQ-Sektion */}
+        <section>
+          <h3>❓ Häufig gestellte Fragen (FAQ)</h3>
+
+          <FAQItem
+            question="Wie erkenne ich einen Vitamin B12-Mangel?"
+            answer="Typische Symptome sind Müdigkeit, Konzentrationsschwierigkeiten und Kribbeln in Händen und Füßen."
+          />
+          <FAQItem
+            question="Wer ist besonders gefährdet?"
+            answer="Vegetarier, Veganer, ältere Menschen und Personen mit Magen-Darm-Erkrankungen."
+          />
+          <FAQItem
+            question="Wie kann ich meinen B12-Spiegel testen lassen?"
+            answer="Durch eine Blutuntersuchung beim Arzt."
+          />
         </section>
 
         <section>
@@ -290,8 +374,32 @@ export default function App() {
         </section>
       </main>
 
-
       <footer>© 2025 Mustafa, Armando, Issam, Saly</footer>
     </>
+  );
+}
+
+// FAQ-Komponente (klein, interaktiv)
+function FAQItem({ question, answer }) {
+  const [open, setOpen] = React.useState(false);
+
+  return (
+    <div className="faq-item">
+      <div
+        className="faq-question"
+        onClick={() => setOpen(!open)}
+        aria-expanded={open}
+        role="button"
+        tabIndex={0}
+        onKeyDown={(e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            setOpen(!open);
+          }
+        }}
+      >
+        {question}
+      </div>
+      {open && <div className="faq-answer">{answer}</div>}
+    </div>
   );
 }
