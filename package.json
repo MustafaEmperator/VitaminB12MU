@@ -12,3 +12,64 @@
     "build": "react-scripts build"
   }
 }
+import React from 'react';
+
+function App() {
+  return (
+    <div style={{ fontFamily: 'Arial, sans-serif', margin: '40px' }}>
+      <h1 style={{ fontSize: '32px' }}>Mustafa, Armando, Issam, Saly</h1>
+      <h2 style={{ fontSize: '24px', marginBottom: '20px' }}>Vitamin B12 - Infos und Selbsttest</h2>
+
+      <section>
+        <h3>🧬 Was ist Vitamin B12?</h3>
+        <p>
+          Vitamin B12 (Cobalamin) ist ein lebenswichtiges Vitamin, das für die Bildung roter Blutkörperchen, 
+          die Funktion des Nervensystems und die Zellteilung benötigt wird.
+        </p>
+      </section>
+
+      <section>
+        <h3>💪 Wirkung von Vitamin B12</h3>
+        <ul>
+          <li>Unterstützt die Blutbildung</li>
+          <li>Wichtig für das Nervensystem</li>
+          <li>Hilft bei der DNA-Synthese</li>
+        </ul>
+      </section>
+
+      <section>
+        <h3>⚠️ Mangelerscheinungen</h3>
+        <ul>
+          <li>Müdigkeit und Schwäche</li>
+          <li>Konzentrationsprobleme</li>
+          <li>Kribbeln in Händen und Füßen</li>
+          <li>Gedächtnisprobleme</li>
+        </ul>
+      </section>
+
+      <section>
+        <h3>🥦 Quellen von Vitamin B12</h3>
+        <ul>
+          <li>Fleisch (v.a. Leber)</li>
+          <li>Fisch (z.B. Lachs, Hering)</li>
+          <li>Eier und Milchprodukte</li>
+          <li>Angereicherte Lebensmittel (für Veganer)</li>
+        </ul>
+      </section>
+
+      <section>
+        <h3>📝 Selbsttest (vereinfacht)</h3>
+        <p>
+          Hast du oft Müdigkeit, Konzentrationsprobleme oder isst du wenig tierische Produkte?
+          Dann könnte ein B12-Mangel vorliegen – sprich mit deinem Arzt!
+        </p>
+      </section>
+
+      <footer style={{ marginTop: '40px', fontStyle: 'italic', fontSize: '14px' }}>
+        © 2025 Mustafa, Armando, Issam, Saly
+      </footer>
+    </div>
+  );
+}
+
+export default App;
