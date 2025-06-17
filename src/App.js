@@ -1,3 +1,5 @@
+import B12Quiz from "@/components/B12Quiz";
+
 import React, { useState } from "react";
 
 export default function App() {
@@ -288,7 +290,8 @@ export default function App() {
             </div>
           )}
         </section>
-      </main>
+      </main><B12Quiz />
+
 
       <footer>© 2025 Mustafa, Armando, Issam, Saly</footer>
     </>
