@@ -56,6 +56,7 @@ export default function App() {
           font-weight: 600;
           display: flex;
           align-items: center;
+          justify-content: center;
           padding: 0 24px;
           letter-spacing: 0.08em;
           user-select: none;
@@ -202,8 +203,8 @@ export default function App() {
         }
       `}</style>
 
-      {/* Top Bar */}
-      <div className="topbar">Mustafa Ünalan</div>
+      {/* Top Bar mit allen Namen */}
+      <div className="topbar">Mustafa · Armando · Issam · Sally</div>
 
       <main>
         <h1>Vitamin B12</h1>
@@ -290,8 +291,7 @@ export default function App() {
         </section>
       </main>
 
-
-      <footer>© 2025 Mustafa, Armando, Issam, Saly</footer>
+      <footer>© 2025 Mustafa, Armando, Issam, Sally</footer>
     </>
   );
-}          
+}
